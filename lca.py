@@ -12,16 +12,19 @@ def LCA(root, node1, node2):
 	if(not root):
 		return None;
 
+	# Root returns itself to its parent if it equals node1 or node2
 	if(root["value"] == node1 or root["value"] == node2):
 		return root["value"]	
 
+	# Traverse down the tree until node1 or node2 is found or until end is reached.
 	left  = LCA(root["left"], node1, node2)
-
 	right = LCA(root["right"], node1, node2)
 
+	# If both true, we know we found the Least Common Parent
 	if(left and right):
 		return root["value"]
 
+	# Either return left, right or Null
 	return left if left else right
 
 
